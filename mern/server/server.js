@@ -5,7 +5,14 @@ import records from "./routes/record.js";
 const PORT = process.env.PORT || 5050;
 const app = express();
 
-app.use(cors());
+// Configure CORS to allow only your frontend URL
+const corsOptions = {
+  origin: "https://toepfernfull-fe.onrender.com", // Replace this with your actual frontend URL
+  optionsSuccessStatus: 200, // Some legacy browsers choke on 204 responses, so this is a safeguard
+};
+
+app.use(cors(corsOptions));
+//app.use(cors());
 app.use(express.json());
 app.use("/record", records);
 
