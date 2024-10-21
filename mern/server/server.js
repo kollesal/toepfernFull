@@ -1,6 +1,10 @@
 import express from "express";
 import cors from "cors";
 import records from "./routes/record.js";
+import dotenv from "dotenv"; // Import dotenv
+
+// Load environment variables from config.env file
+dotenv.config({ path: './config.env' }); // Make sure the path is correct
 
 const PORT = process.env.PORT || 5050;
 const app = express();
