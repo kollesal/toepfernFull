@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const Record = (props) => (
   <tr className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
@@ -35,6 +36,16 @@ const Record = (props) => (
   </tr>
 );
 
+Record.propTypes = {
+  record: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    position: PropTypes.string.isRequired,
+    level: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
+  }).isRequired,
+  deleteRecord: PropTypes.func.isRequired,
+};
+
 export default function RecordList() {
   const [records, setRecords] = useState([]);
 
@@ -42,22 +53,6 @@ export default function RecordList() {
   useEffect(() => {
     async function getRecords() {
       const response = await fetch(`https://toepfernfull-be.onrender.com/record/`);
-      if (!response.ok) {
-        const message = `An error occurred: ${response.statusText}`;
-        console.error(message);
-        return;
-      }
-      const records = await response.json();
-      setRecords(records);
-    }
-    getRecords();
-    return;
-  }, [records.length]);
-
-  // This method fetches the records from the database.
-  useEffect(() => {
-    async function getRecords() {
-      const response = await fetch(`https://toepfernfull-be.onrender.com/`);
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
         console.error(message);
