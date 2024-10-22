@@ -54,6 +54,22 @@ export default function RecordList() {
     return;
   }, [records.length]);
 
+  // This method fetches the records from the database.
+  useEffect(() => {
+    async function getRecords() {
+      const response = await fetch(`https://toepfernfull-be.onrender.com/`);
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        console.error(message);
+        return;
+      }
+      const records = await response.json();
+      setRecords(records);
+    }
+    getRecords();
+    return;
+  }, [records.length]);
+
   // This method will delete a record
   async function deleteRecord(id) {
     await fetch(`https://toepfernfull-be.onrender.com/record/${id}`, {
