@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react()],
   base: '/',  // Ensure this base URL is correct
   build: {
-    outDir: 'public',  // Vite builds to 'dist' by default
+    outDir: 'dist',  // Vite builds to 'dist' by default
   },
 })
