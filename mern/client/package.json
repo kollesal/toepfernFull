@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "homepage": "https://toepfernfull-fe.onrender.com",
   "scripts": {
     "start": "yarn start",
     "dev": "vite",
