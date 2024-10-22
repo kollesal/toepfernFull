@@ -95,7 +95,7 @@ export default function RecordList() {
 <div className="my-4">
         <h3 className="text-lg font-semibold p-4">Forming</h3>
         <video width="600" controls>
-          <source src="src/assets/20241020_084356.mp4" type="video/mp4" />
+          <source src="public/20241020_084356.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -103,7 +103,7 @@ export default function RecordList() {
       <div className="my-4">
         <h3 className="text-lg font-semibold p-4">Footing</h3>
         <video width="600" controls>
-          <source src="src/assets/20241021_081329.mp4" type="video/mp4" />
+          <source src="public/20241021_081329.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -112,7 +112,7 @@ export default function RecordList() {
        <div className="my-4">
         <h3 className="text-lg font-semibold p-4">Form Front</h3>
         <img 
-          src="src/assets/Front.jpg" 
+          src="public/Front.jpg" 
           alt="Team Photo" 
           width="600" 
           className="rounded-lg"
@@ -122,7 +122,7 @@ export default function RecordList() {
       <div className="my-4">
         <h3 className="text-lg font-semibold p-4">Form Front</h3>
         <img 
-          src="src/assets/Foot.jpg" 
+          src="public/Foot.jpg" 
           alt="Team Photo" 
           width="600" 
           className="rounded-lg"
