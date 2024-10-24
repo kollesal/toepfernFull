@@ -7,6 +7,9 @@ import {
 import App from "./App";
 import Record from "./components/Record";
 import RecordList from "./components/RecordList";
+import Clay from "./components/clay";
+import Color from "./components/color";
+
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -40,6 +43,28 @@ const router = createBrowserRouter([
       },
     ],
   },
+   {
+    path: "/clay",
+    element: <App />, 
+    children: [
+      {
+        path: "/clay",
+        element: <Clay/>, 
+      },
+    ],
+  },
+
+  {
+    path: "/color",
+    element: <App />, 
+    children: [
+      {
+        path: "/color",
+        element: <Color/>,
+      },
+    ],
+  }, 
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1 {
+    font-size: 2em;  /* Make <h1> bigger */
+    font-weight: bold;  /* Ensure it's bold */
+  }
+  
+  p {
+    font-size: 1em;  /* Default size for <p> */
+    font-weight: normal;
+  }
