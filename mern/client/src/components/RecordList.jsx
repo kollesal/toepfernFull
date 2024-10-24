@@ -175,16 +175,6 @@ export default function RecordList() {
       </div>
 
       <div className="my-4">
-        <h3 className="text-lg font-semibold p-4">One I am using right now with a bit grog</h3>
-        <img 
-          src="/20241019_114542.jpg" 
-          alt="Team Photo" 
-          width="600" 
-          className="rounded-lg"
-        />
-      </div>
-
-      <div className="my-4">
         <h3 className="text-lg font-semibold p-4">One I am using right now with more grog</h3>
         <img 
           src="/20241019_114557.jpg" 
