@@ -92,27 +92,21 @@ export default function RecordList() {
     <>
 
 {/* Video */}
+<h1 className="text-lg font-semibold p-4">Option 1: Natural Clay Colors</h1>
 <div className="my-4">
-        <h3 className="text-lg font-semibold p-4">Forming</h3>
+        <h3 className="text-lg font-semibold p-4">Clays</h3>
         <video width="600" controls>
-          <source src="/20241020_084356.mp4" type="video/mp4" />
+          <source src="/20241019_104601.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
 
-      <div className="my-4">
-        <h3 className="text-lg font-semibold p-4">Footing</h3>
-        <video width="600" controls>
-          <source src="/20241021_081329.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
 
        {/* Image Section */}
        <div className="my-4">
-        <h3 className="text-lg font-semibold p-4">Form Front</h3>
+        <h3 className="text-lg font-semibold p-4">Photographs of clay</h3>
         <img 
-          src="/Front.jpg" 
+          src="/20241019_104647.jpg" 
           alt="Team Photo" 
           width="600" 
           className="rounded-lg"
@@ -120,14 +114,87 @@ export default function RecordList() {
       </div>
 
       <div className="my-4">
-        <h3 className="text-lg font-semibold p-4">Form Front</h3>
+        <h3 className="text-lg font-semibold p-4">Photographs of clay</h3>
         <img 
-          src="/Foot.jpg" 
+          src="/20241019_104701.jpg" 
           alt="Team Photo" 
           width="600" 
           className="rounded-lg"
         />
       </div>
+
+      <div className="my-4">
+        <h3 className="text-lg font-semibold p-4">Photographs of clay</h3>
+        <img 
+          src="/20241019_104715.jpg" 
+          alt="Team Photo" 
+          width="600" 
+          className="rounded-lg"
+        />
+      </div>
+
+
+      <div className="my-4">
+        <h3 className="text-lg font-semibold p-4">Even more clay (only 3rd row to consider)</h3>
+        <img 
+          src="/20241023_153341.jpg" 
+          alt="Team Photo" 
+          width="600" 
+          className="rounded-lg"
+        />
+      </div>
+
+      <div className="my-4">
+        <h3 className="text-lg font-semibold p-4">Absolute beauty</h3>
+        <img 
+          src="/20241019_114520.jpg" 
+          alt="Team Photo" 
+          width="600" 
+          className="rounded-lg"
+        />
+      </div>
+
+      <div className="my-4">
+        <h3 className="text-lg font-semibold p-4">Maybe?</h3>
+        <img 
+          src="/20241019_114509.jpg" 
+          alt="Team Photo" 
+          width="600" 
+          className="rounded-lg"
+        />
+      </div>
+
+      <div className="my-4">
+        <h3 className="text-lg font-semibold p-4">One I am using right now without grog</h3>
+        <img 
+          src="/20241019_114551.jpg" 
+          alt="Team Photo" 
+          width="600" 
+          className="rounded-lg"
+        />
+      </div>
+
+      <div className="my-4">
+        <h3 className="text-lg font-semibold p-4">One I am using right now with a bit grog</h3>
+        <img 
+          src="/20241019_114542.jpg" 
+          alt="Team Photo" 
+          width="600" 
+          className="rounded-lg"
+        />
+      </div>
+
+      <div className="my-4">
+        <h3 className="text-lg font-semibold p-4">One I am using right now with more grog</h3>
+        <img 
+          src="/20241019_114557.jpg" 
+          alt="Team Photo" 
+          width="600" 
+          className="rounded-lg"
+        />
+      </div>
+
+
 
 
       <h3 className="text-lg font-semibold p-4">Employee Records</h3>
