@@ -95,6 +95,7 @@ export default function RecordList() {
 <h1 className="text-lg font-semibold p-4">Option 1: Natural Clay Colors</h1>
 <div className="my-4">
         <h3 className="text-lg font-semibold p-4">Clays</h3>
+        <p className="text-lg font-semibold p-4">Not all of the Clay can be considered, it needs to be fired at around 1250. But I will check on it</p>
         <video width="600" controls>
           <source src="/20241019_104601.mp4" type="video/mp4" />
           Your browser does not support the video tag.
