@@ -1,25 +1,27 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://salomejkoller:f8ZVFal99lKJDiMt@cluster0.1r8kl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+import { MongoClient, ServerApiVersion } from "mongodb";
+import dotenv from "dotenv";
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+dotenv.config();
+
+const uri = process.env.ATLAS_URI; // Load from env variables
+
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
-  }
+  },
 });
 
-async function run() {
+async function connectDB() {
   try {
-    // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
-    // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
+    console.log("✅ Connected to MongoDB successfully!");
+  } catch (error) {
+    console.error("❌ MongoDB connection error:", error);
+    process.exit(1);
   }
 }
-run().catch(console.dir);
+
+export { client, connectDB }; // Use named exports
