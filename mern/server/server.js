@@ -27,3 +27,7 @@ connectDB().then(() => {
 }).catch((err) => {
   console.error("❌ Error connecting to MongoDB:", err);
 });
+
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
