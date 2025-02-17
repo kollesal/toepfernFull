@@ -7,6 +7,11 @@ const uri = process.env.ATLAS_URI; // Load from env variables
 
 const client = new MongoClient(uri, {
   serverApi: {
+    ssl: true,
+    tls: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverApi: ServerApiVersion.v1, 
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
