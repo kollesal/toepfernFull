@@ -18,7 +18,8 @@ const client = new MongoClient(uri, {
   },
 });
 
-try {
+async function connectDB() {
+  try {
   // Connect the client to the server
   await client.connect();
   // Send a ping to confirm a successful connection
@@ -27,7 +28,9 @@ try {
 } catch (err) {
   console.error(err);
 }
+}
 
 let db = client.db("employees");
 
+export { connectDB }; 
 export default db;
