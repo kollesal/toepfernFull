@@ -28,6 +28,10 @@ connectDB().then(() => {
   console.error("❌ Error connecting to MongoDB:", err);
 });
 
+app.get("/", (req, res) => {
+  res.send("Server is running!");
+});
+
 app.get('/health', (req, res) => {
   res.status(200).send('OK');
 });
