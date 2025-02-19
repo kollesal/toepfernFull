@@ -3,8 +3,7 @@ import UploadImage from "./UploadImage"; // Import the UploadImage component tha
 
 export default function Clay() {
   const [pottery, setPottery] = useState([]);
-  const [showForm, setShowForm] = useState(false); // State to toggle the visibility of the form
-
+ 
   // Fetch all pottery from the backend
   useEffect(() => {
     fetch("https://your-backend-url.com/pottery")
@@ -19,7 +18,7 @@ export default function Clay() {
       <button onClick={() => console.log("Button clicked!")}>Create New Pottery</button>
 
       {/* Conditionally render the form when the user clicks 'Create New Pottery' */}
-      {showForm && <UploadImage />}
+      { <UploadImage />}
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px" }}>
         {pottery.map((item) => (
