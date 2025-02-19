@@ -1,56 +1,51 @@
 export default function Clay() {
-    return (
-      <div>
-        <div>
-          <h1>Color Place</h1>
-          <p>Here are some options for the colors:</p>
-        </div>
-  
-        <div className="my-4">
-          <h3 className="text-lg font-semibold p-4">ROK Velvet</h3>
-          <p>
-            Maybe the &quot;lichter Oker&quot; (GRV 62), &quot;Rehbraun&quot; (GRV 63) or &quot;Sepia&quot; (GRV64):
-          </p>
-          <img 
-            src="/20241019_103933.jpg" 
-            alt="Team Photo" 
-            width="600" 
-            className="rounded-lg"
-          />
-        </div>
-  
-        <div className="my-4">
-          <h3 className="text-lg font-semibold p-4">Amaco Velvet</h3>
-          <p>
-            Second to last line: Maybe the &quot;Beige&quot;, &quot;Tan&quot;, &quot;Medium Brown&quot; or &quot;Teddy Bear Brown&quot;:
-          </p>
-          <img 
-            src="/20241019_103328.jpg" 
-            alt="Team Photo" 
-            width="600" 
-            className="rounded-lg"
-          />
-        </div>
+  // Sample pottery data (replace with API data later)
+  const potteryItems = [
+    {
+      id: 1,
+      name: "Rustic Clay Vase",
+      image: "https://source.unsplash.com/400x400/?clay,vase",
+      description: "Handmade vase with a smooth finish.",
+    },
+    {
+      id: 2,
+      name: "Minimalist Mug",
+      image: "https://source.unsplash.com/400x400/?ceramic,mug",
+      description: "Perfect for coffee lovers.",
+    },
+    {
+      id: 3,
+      name: "Decorative Bowl",
+      image: "https://source.unsplash.com/400x400/?clay,bowl",
+      description: "Elegant centerpiece for any table.",
+    },
+    {
+      id: 4,
+      name: "Artistic Plate",
+      image: "https://source.unsplash.com/400x400/?ceramic,plate",
+      description: "Hand-painted ceramic plate.",
+    },
+  ];
 
-        <p>
-            I have checked out some of the browns, they can look a bit different:
-          </p>
+  return (
+    <div className="min-h-screen bg-gray-100 p-6">
+      <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
+        My Pottery Collection
+      </h1>
 
-          <div className="my-4">
-          <h3 className="text-lg font-semibold p-4">Browns</h3>
-         
-          <img 
-            src="/20241023_153453.jpg" 
-            alt="Team Photo" 
-            width="600" 
-            className="rounded-lg"
-          />
-        </div>
-
-
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {potteryItems.map((item) => (
+          <div key={item.id} className="bg-white shadow-lg rounded-xl p-4">
+            <img
+              src={item.image}
+              alt={item.name}
+              className="w-full h-48 object-cover rounded-lg"
+            />
+            <h2 className="text-lg font-semibold mt-4">{item.name}</h2>
+            <p className="text-gray-600 mt-2">{item.description}</p>
+          </div>
+        ))}
       </div>
-
-      
-    );
-  }
-  
+    </div>
+  );
+}
