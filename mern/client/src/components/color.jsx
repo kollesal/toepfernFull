@@ -1,31 +1,31 @@
+import { useEffect, useState } from "react";
+
 export default function Clay() {
-  // Sample pottery data (replace with API data later)
-  const potteryItems = [
-    {
-      id: 1,
-      name: "Rustic Clay Vase",
-      image: "https://source.unsplash.com/400x400/?clay,vase",
-      description: "Handmade vase with a smooth finish.",
-    },
-    {
-      id: 2,
-      name: "Minimalist Mug",
-      image: "https://source.unsplash.com/400x400/?ceramic,mug",
-      description: "Perfect for coffee lovers.",
-    },
-    {
-      id: 3,
-      name: "Decorative Bowl",
-      image: "https://source.unsplash.com/400x400/?clay,bowl",
-      description: "Elegant centerpiece for any table.",
-    },
-    {
-      id: 4,
-      name: "Artistic Plate",
-      image: "https://source.unsplash.com/400x400/?ceramic,plate",
-      description: "Hand-painted ceramic plate.",
-    },
-  ];
+  const [pottery, setPottery] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // Fetch pottery data from backend
+    fetch("https://toepfernfull-be.onrender.com/record/pottery") // Update with your actual API endpoint
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch pottery data");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setPottery(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <p className="text-center text-gray-600">Loading pottery...</p>;
+  if (error) return <p className="text-center text-red-500">Error: {error}</p>;
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
@@ -34,15 +34,12 @@ export default function Clay() {
       </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {potteryItems.map((item) => (
-          <div key={item.id} className="bg-white shadow-lg rounded-xl p-4">
-            <img
-              src={item.image}
-              alt={item.name}
-              className="w-full h-48 object-cover rounded-lg"
-            />
-            <h2 className="text-lg font-semibold mt-4">{item.name}</h2>
-            <p className="text-gray-600 mt-2">{item.description}</p>
+        {pottery.map((item) => (
+          <div key={item._id.$oid} className="bg-white shadow-lg rounded-xl p-4">
+            <h2 className="text-lg font-semibold">{item.name}</h2>
+            <p className="text-gray-600">Type: {item.type}</p>
+            <p className="text-gray-600">Clay: {item.clay}</p>
+            <p className="text-gray-600">Glaze: {item.glaze}</p>
           </div>
         ))}
       </div>
