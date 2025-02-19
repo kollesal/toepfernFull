@@ -18,6 +18,19 @@ router.get("/", async (req, res) => {
   res.send(results).status(200);
 });
 
+// Get all pottery items
+router.get("/pottery", async (req, res) => {
+  try {
+    let potteryCollection = db.collection("pottery");
+    let pottery = await potteryCollection.find({}).toArray();
+    res.json(pottery);
+  } catch (error) {
+    console.error("Error fetching pottery:", error);
+    res.status(500).json({ message: "Server error fetching pottery" });
+  }
+});
+
+
 // This section will help you get a single record by id
 router.get("/:id", async (req, res) => {
   let collection = await db.collection("records");
