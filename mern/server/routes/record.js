@@ -6,10 +6,14 @@ import db from "../db/connection.js";
 // This help convert the id from string to ObjectId for the _id.
 import { ObjectId } from "mongodb";
 
+import multer from "multer";
+
 // router is an instance of the express router.
 // We use it to define our routes.
 // The router will be added as a middleware and will take control of requests starting with path /record.
 const router = express.Router();
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 // This section will help you get a list of all the records.
 router.get("/", async (req, res) => {
@@ -27,6 +31,27 @@ router.get("/pottery", async (req, res) => {
   } catch (error) {
     console.error("Error fetching pottery:", error);
     res.status(500).json({ message: "Server error fetching pottery" });
+  }
+});
+
+// Route to create a new pottery item
+router.post("/upload", upload.single("image"), async (req, res) => {
+  try {
+    const newPottery = new Pottery({
+      name: req.body.name,
+      type: req.body.type,
+      clay: req.body.clay,
+      glaze: req.body.glaze,
+      image: {
+        data: req.file.buffer,
+        contentType: req.file.mimetype,
+      },
+    });
+
+    await newPottery.save();
+    res.status(201).json({ message: "Pottery uploaded successfully!" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 });
 

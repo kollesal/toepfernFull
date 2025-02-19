@@ -1,45 +1,41 @@
 import { useEffect, useState } from "react";
+import UploadImage from "./UploadImage"; // Import the UploadImage component that handles pottery creation
 
 export default function Clay() {
   const [pottery, setPottery] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [showForm, setShowForm] = useState(false); // State to toggle the visibility of the form
 
+  // Fetch all pottery from the backend
   useEffect(() => {
-    // Fetch pottery data from backend
-    fetch("https://toepfernfull-be.onrender.com/record/pottery") // Update with your actual API endpoint
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch pottery data");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setPottery(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
+    fetch("https://your-backend-url.com/pottery")
+      .then((res) => res.json())
+      .then((data) => setPottery(data))
+      .catch((err) => console.error("Failed to fetch pottery:", err));
   }, []);
 
-  if (loading) return <p className="text-center text-gray-600">Loading pottery...</p>;
-  if (error) return <p className="text-center text-red-500">Error: {error}</p>;
+  // Toggle the visibility of the form
+  const handleNewPottery = () => {
+    setShowForm(!showForm);
+  };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
-        My Pottery Collection
-      </h1>
+    <div>
+      <h1>My Pottery Collection</h1>
+      <button onClick={handleNewPottery} style={{ marginBottom: "20px", padding: "10px" }}>
+        {showForm ? "Cancel" : "Create New Pottery"}
+      </button>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {/* Conditionally render the form when the user clicks 'Create New Pottery' */}
+      {showForm && <UploadImage />}
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px" }}>
         {pottery.map((item) => (
-          <div key={item._id.$oid} className="bg-white shadow-lg rounded-xl p-4">
-            <h2 className="text-lg font-semibold">{item.name}</h2>
-            <p className="text-gray-600">Type: {item.type}</p>
-            <p className="text-gray-600">Clay: {item.clay}</p>
-            <p className="text-gray-600">Glaze: {item.glaze}</p>
+          <div key={item._id} style={{ border: "1px solid #ddd", padding: "10px", textAlign: "center" }}>
+            <img src={item.image} alt={item.name} width="200" />
+            <h2>{item.name}</h2>
+            <p>Type: {item.type}</p>
+            <p>Clay: {item.clay}</p>
+            <p>Glaze: {item.glaze}</p>
           </div>
         ))}
       </div>
