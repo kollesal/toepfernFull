@@ -13,17 +13,10 @@ export default function Clay() {
       .catch((err) => console.error("Failed to fetch pottery:", err));
   }, []);
 
-  // Toggle the visibility of the form
-  const handleNewPottery = () => {
-    setShowForm(!showForm);
-  };
-
   return (
     <div>
       <h1>My Pottery Collection</h1>
-      <button onClick={handleNewPottery} style={{ marginBottom: "20px", padding: "10px" }}>
-        {showForm ? "Cancel" : "Create New Pottery"}
-      </button>
+      <button onClick={() => console.log("Button clicked!")}>Create New Pottery</button>
 
       {/* Conditionally render the form when the user clicks 'Create New Pottery' */}
       {showForm && <UploadImage />}
